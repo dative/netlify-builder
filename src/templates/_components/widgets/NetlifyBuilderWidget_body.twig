@@ -1,0 +1,65 @@
+{#
+/**
+ * NetlifyBuilder plugin for Craft CMS
+ *
+ * NetlifyBuilderWidget Widget Body
+ *
+ * @author    Rodrigo Passos
+ * @copyright Copyright (c) 2022 Rodrigo Passos
+ * @link      https://hellodative.com
+ * @package   NetlifyBuilder
+ * @since     1.0.0
+ */
+#}
+
+{%- macro timeAgo(date, additionalAttributes) -%}
+{% if date is defined %}
+{# settings #}
+{% set format = 'medium' %}
+{% set locale = currentSite.language %}
+{# logic #}
+{% set formatter = create({ class: 'craft\\i18n\\Formatter', locale: locale }) %}
+{% set attributes = {
+	text: formatter.asRelativeTime(date),
+	datetime: date|date('yy-m-d'),
+	title: date|date(format),
+} %}
+{% if additionalAttributes is defined and additionalAttributes is not iterable %}
+	{% set attributes = attributes|merge({class: additionalAttributes}) %}
+{% elseif additionalAttributes is iterable %}
+	{% set attributes = attributes|merge(additionalAttributes) %}
+{% endif %}
+{{tag('time',attributes)}}
+{% endif %}
+{%- endmacro -%}
+
+{% if badgeSrc and badgeSrc|length > 0 %}
+  <div class="netlify-build-badge">
+    <img src="{{badgeSrc}}" alt="Deploy status badge">
+  </div>
+{% endif %}
+
+<div class="NetlifyBuilder">
+{% if deltaCount > 0 %}
+  <span>
+    {% if deltaCount == 1 %}
+      {{ "You have <strong>1</strong> update to deploy"|t('netlify-builder')|raw }}
+    {% else %}
+      {{ "You have <strong>{deltaCount}</strong> updates to deploy"|t('netlify-builder', { deltaCount: deltaCount })|raw }}
+    {% endif %}
+  </span>
+  <form method="post">
+    {{ csrfInput() }}
+    {{ redirectInput("") }}
+    <input type="hidden" name="action" value="netlify-builder/default/trigger-build">
+    <input class="btn submit" type="submit" value="Deploy Changes">
+  </form>
+{% else %}
+  <span>
+    {{ "Your build is up to date"|t('netlify-builder') }}
+    {% if lastBuild %}
+      {{ "<br>Last build: <strong>{lastBuild}</strong>"|t('netlify-builder', { lastBuild: _self.timeAgo(lastBuild) })|raw }}
+    {% endif %}
+  </span>
+{% endif %}
+</div>

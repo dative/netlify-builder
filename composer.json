@@ -1,0 +1,49 @@
+{
+    "name": "dative/netlify-builder",
+    "description": "NetlifyBuilder helps you build & track differences between the Craft's entries and what's live.",
+    "type": "craft-plugin",
+    "version": "1.0.0",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin",
+        "netlifybuilder"
+    ],
+    "support": {
+        "docs": "https://github.com/dative/netlify-builder/blob/master/README.md",
+        "issues": "https://github.com/dative/netlify-builder/issues"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rodrigo Passos",
+            "homepage": "https://hellodative.com"
+        }
+    ],
+    "require": {
+        "craftcms/cms": "^3.0.0"
+    },
+    "require-dev": {
+      "craftcms/cms": "^3.2.0",
+      "codeception/codeception": "^3.0",
+      "vlucas/phpdotenv": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+          "dative\\netlifybuilder\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "NetlifyBuilder",
+        "handle": "netlify-builder",
+        "developer": "Rodrigo Passos",
+        "developerUrl": "https://hellodative.com",
+        "documentationUrl": "https://github.com/dative/netlify-builder/blob/master/README.md",
+        "changelogUrl": "https://raw.githubusercontent.com/dative/netlify-builder/master/CHANGELOG.md",
+        "components": {
+            "netlifyBuilderService": "dative\\netlifybuilder\\services\\NetlifyBuilderService"
+        },
+        "class": "dative\\netlifybuilder\\NetlifyBuilder"
+    }
+}

@@ -1,0 +1,32 @@
+{#
+/**
+ * NetlifyBuilder plugin for Craft CMS 3.x
+ *
+ * NetlifyBuilder Settings.twig
+ *
+ * @author    Rodrigo Passos
+ * @copyright Copyright (c) 2022 Rodrigo Passos
+ * @link      https://hellodative.com
+ * @package   NetlifyBuilder
+ * @since     1.0.0
+ */
+#}
+
+{% import "_includes/forms" as forms %}
+
+{{ forms.autosuggestField({
+    label: 'Build Webhook URL'|t('netlify-builder'),
+    instructions: 'The Netilify webhook URL that should be called when a build is triggered.'|t('netlify-builder'),
+    name: 'buildWebhookUrl',
+    value: settings.buildWebhookUrl,
+    suggestEnvVars: true,
+    suggestAliases: true,
+}) }}
+
+{{ forms.autosuggestField({
+    label: 'Build Status Badge Source'|t('netlify-builder'),
+    name: 'buildStatusBadgeSrc',
+    value: settings.buildStatusBadgeSrc,
+    suggestEnvVars: true,
+    suggestAliases: true,
+}) }}
