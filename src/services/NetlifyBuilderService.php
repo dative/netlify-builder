@@ -33,7 +33,7 @@ class NetlifyBuilderService extends Component
 
     public function triggerBuild()
     {
-        // $this->_sendBuildRequest();
+        $this->_sendBuildRequest();
 
         $logJson = [
             'elementsUpdated' => $this->getDeltaCount(),
