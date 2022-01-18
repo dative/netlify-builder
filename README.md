@@ -6,7 +6,7 @@ NetlifyBuilder helps you build & track differences between the Craft's entries a
 
 ## Requirements
 
-This plugin requires Craft CMS 3.0.0-beta.23 or later.
+This plugin requires Craft CMS 3.7 or later.
 
 ## Installation
 
@@ -22,22 +22,18 @@ To install the plugin, follow these instructions.
 
 3. In the Control Panel, go to Settings → Plugins and click the “Install” button for NetlifyBuilder.
 
-## NetlifyBuilder Overview
-
--Insert text here-
-
 ## Configuring NetlifyBuilder
 
--Insert text here-
+After installing, you will need to add both the Netlify build webhook and the build badge source.
 
 ## Using NetlifyBuilder
 
--Insert text here-
+Once configured, just add the widget to the dashboard. As you update entries, assets, etc., the plugin will track those changes and display the butotn to trigger a build.
 
 ## NetlifyBuilder Roadmap
 
 Some things to do, and ideas for potential features:
 
-* Release it
+* Add view to see the changes since the last build.
 
-Brought to you by [Rodrigo Passos](https://hellodative.com)
+Brought to you by [Dative](https://hellodative.com)
