@@ -2,7 +2,7 @@
     "name": "dative/netlify-builder",
     "description": "NetlifyBuilder helps you build & track differences between the Craft's entries and what's live.",
     "type": "craft-plugin",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "keywords": [
         "craft",
         "cms",
