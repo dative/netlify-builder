@@ -1,4 +1,5 @@
 <?php
+
 /**
  * NetlifyBuilder plugin for Craft CMS 3.x
  *
@@ -139,7 +140,7 @@ class NetlifyBuilderService extends Component
     {
         $entryDeltaRecord = new BuildDeltaRecord();
         $entryDeltaRecord->setAttribute('elementId', $element->id);
-        $entryDeltaRecord->setAttribute('elementType',get_class($element));
+        $entryDeltaRecord->setAttribute('elementType', get_class($element));
         $entryDeltaRecord->setAttribute('actionType', $actionType);
         $entryDeltaRecord->save();
     }
@@ -150,14 +151,14 @@ class NetlifyBuilderService extends Component
 
         if (!empty($buildWebhookUrl) && $this->_isBuildQueued === false) {
             $this->_isBuildQueued = true;
-            Craft::$app->on(Application::EVENT_AFTER_REQUEST, function() use ($buildWebhookUrl) {
+            Craft::$app->on(Application::EVENT_AFTER_REQUEST, function () use ($buildWebhookUrl) {
                 $guzzle = Craft::createGuzzleClient([
                     'headers' => [
                         'x-preview-update-source' => 'Craft CMS / NetlifyBuilder Plugin',
                         'Content-type' => 'application/json'
                     ]
                 ]);
-                $guzzle->request('POST', $buildWebhookUrl);
+                $guzzle->request('POST', $buildWebhookUrl, ['query' => ['clear_cache' => 'true']]);
             }, null, false);
         }
     }
